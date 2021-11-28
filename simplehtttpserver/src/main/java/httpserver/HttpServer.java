@@ -2,6 +2,9 @@ package httpserver;
 
 import httpserver.config.Configuration;
 import httpserver.config.ConfigurationManager;
+import httpserver.core.ServerListenerThread;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,29 +21,25 @@ import java.nio.charset.StandardCharsets;
 
 
 public class HttpServer {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(HttpServer.class);
+
     public static void main(String[] args){
 
-        System.out.println("Server Starting...");
-
-        ConfigurationManager.getInstance().loadConfigurationFile("src/main/resources/http.json");
+        LOGGER.info("Server starting...");
+        ConfigurationManager.getInstance().loadConfigurationFile("simplehtttpserver/src/main/resources/http.json");
         Configuration conf = ConfigurationManager.getInstance().getCurrentConfiguration();
 
-        System.out.println("Using Port: " + conf.getPort());
-        System.out.println("Using WebRoot: " + conf.getWebroot());
+        LOGGER.info("Using Port: " + conf.getPort());
+        LOGGER.info("Using WebRoot: " + conf.getWebroot());
 
         try {
-            ServerSocket serverSocket = new ServerSocket(conf.getPort());
-            Socket socket = serverSocket.accept();
-            InputStream inputStream = socket.getInputStream();
-            OutputStream outputStream = socket.getOutputStream();
-
-            inputStream.close();
-            outputStream.close();
-            socket.close();
-            serverSocket.close();
-
+            ServerListenerThread serverListenerThread = new ServerListenerThread(conf.getPort(), conf.getWebroot());
+            serverListenerThread.start();
         } catch (IOException e) {
             e.printStackTrace();
+            // TODO handle later
         }
+
     }
 }

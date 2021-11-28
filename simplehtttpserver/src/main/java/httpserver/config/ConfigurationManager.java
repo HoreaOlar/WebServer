@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import httpserver.util.Json;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -35,12 +36,13 @@ public class ConfigurationManager {
         }
         StringBuffer sb = new StringBuffer();
         int i;
-        try {
-            while ((i = fileReader.read()) != -1) {
-                sb.append((char) i);
+        while(true){
+            try {
+                if (!((i = fileReader.read()) != -1)) break;
+            } catch (IOException e) {
+                throw new HttpConfigurationException(e);
             }
-        }catch (IOException e){
-            throw new HttpConfigurationException(e);
+            sb.append((char)i);
         }
         JsonNode conf = null;
         try {
@@ -59,8 +61,8 @@ public class ConfigurationManager {
      *  Return the current loaded Configuration
      */
     public Configuration getCurrentConfiguration(){
-        if(myCurrentConfiguration == null){
-            throw new HttpConfigurationException("No Current Configuration");
+        if (myCurrentConfiguration == null){
+            throw new HttpConfigurationException("No Current Configuration Set.");
         }
         return myCurrentConfiguration;
     }
