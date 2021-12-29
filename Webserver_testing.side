@@ -1,0 +1,123 @@
+{
+  "id": "a968f4e3-a964-4b98-a9b7-1f58b94097c1",
+  "version": "2.0",
+  "name": "Webserver_testing",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "4f676fd0-4098-4a4d-9005-49ec8b8e6189",
+    "name": "Webserver_simple_test",
+    "commands": [{
+      "id": "f8b02c0e-ae65-41a9-8698-42c858a32b16",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "121bdabe-4f2d-4596-8d70-45c1d509200e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9b046ce0-1572-4c24-9653-d1289ae11a70",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=OLX(External link)",
+      "targets": [
+        ["linkText=OLX(External link)", "linkText"],
+        ["css=li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'OLX(External link)')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'https://www.olx.ro/')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'OLX(External link)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a212c9e2-1e87-427f-9065-f5f39fee9121",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=headerLogo",
+      "targets": [
+        ["id=headerLogo", "id"],
+        ["linkText=Anunturi pe OLX.ro", "linkText"],
+        ["css=#headerLogo", "css:finder"],
+        ["xpath=//a[@id='headerLogo']", "xpath:attributes"],
+        ["xpath=//header[@id='header-container']/div/div/h1/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://www.olx.ro')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Anunturi pe OLX.ro')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b295d1d7-4b71-470f-b291-3484af9525ef",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=headerLogo",
+      "targets": [
+        ["id=headerLogo", "id"],
+        ["linkText=Anunturi pe OLX.ro", "linkText"],
+        ["css=#headerLogo", "css:finder"],
+        ["xpath=//a[@id='headerLogo']", "xpath:attributes"],
+        ["xpath=//header[@id='header-container']/div/div/h1/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://www.olx.ro')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Anunturi pe OLX.ro')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dca0795b-126e-430b-9175-1e8b3d2a8e33",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Internal link",
+      "targets": [
+        ["linkText=Internal link", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Internal link')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'com/example/vvs/simplerel.html')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Internal link')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "558e60f7-8b0d-4e54-a8db-ab438116bf8c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=BACK TO INDEX (MAIN PAGE)",
+      "targets": [
+        ["linkText=BACK TO INDEX (MAIN PAGE)", "linkText"],
+        ["css=a", "css:finder"],
+        ["xpath=//a[contains(text(),'BACK TO INDEX (MAIN PAGE)')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'index.html')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'BACK TO INDEX (MAIN PAGE)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1ce48ad7-1359-4e6b-bbf4-ad104e9d447b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=404 test",
+      "targets": [
+        ["linkText=404 test", "linkText"],
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'404 test')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '404.html')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'404 test')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "008f5f27-2828-4ac3-b6e0-b2cb9b3187a3",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["4f676fd0-4098-4a4d-9005-49ec8b8e6189"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}
